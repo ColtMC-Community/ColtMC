@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ColtMC — Information</title>
+
+<meta
+    name="description"
+    content="ColtMC server information, team, game modes and supported editions."
+>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #070504;
+        color: #fff;
+        overflow-x: hidden;
+    }
+
+    /* =========================
+       BACKGROUND
+    ========================= */
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: -5%;
+        z-index: -3;
+
+        background:
+            linear-gradient(
+                rgba(7, 5, 4, .72),
+                rgba(7, 5, 4, .95)
+            ),
+            url("assets/background.jpg")
+            center / cover no-repeat;
+
+        animation:
+            backgroundMove 22s ease-in-out infinite alternate;
+    }
+
+    body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        pointer-events: none;
+
+        background:
+            radial-gradient(
+                circle at 50% 20%,
+                rgba(255, 158, 49, .15),
+                transparent 30%
+            ),
+            radial-gradient(
+                circle at 10% 80%,
+                rgba(255, 96, 15, .08),
+                transparent 30%
+            );
+    }
+
+    @keyframes backgroundMove {
+
+        from {
+            transform:
+                scale(1.05)
+                translate3d(0, 0, 0);
+        }
+
+        to {
+            transform:
+                scale(1.12)
+                translate3d(-1%, -1%, 0);
+        }
+
+    }
+
+    /* =========================
+       PARTICLES
+    ========================= */
+
+    #particles {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .particle {
+        position: absolute;
+
+        width: 3px;
+        height: 3px;
+
+        border-radius: 50%;
+
+        background: #ffb55a;
+
+        opacity: .35;
+
+        animation:
+            particleFloat linear infinite;
+    }
+
+    @keyframes particleFloat {
+
+        from {
+            transform:
+                translateY(110vh)
+                translateX(0);
+
+            opacity: 0;
+        }
+
+        15% {
+            opacity: .45;
+        }
+
+        80% {
+            opacity: .25;
+        }
+
+        to {
+            transform:
+                translateY(-10vh)
+                translateX(90px);
+
+            opacity: 0;
+        }
+
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    nav {
+        position: fixed;
+
+        top: 18px;
+        left: 50%;
+
+        transform:
+            translateX(-50%);
+
+        width:
+            min(1150px, calc(100% - 30px));
+
+        padding:
+            12px 18px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+
+        background:
+            rgba(13, 9, 6, .7);
+
+        border:
+            1px solid
+            rgba(255,180,80,.16);
+
+        border-radius:
+            18px;
+
+        backdrop-filter:
+            blur(18px);
+
+        box-shadow:
+            0 20px 60px
+            rgba(0,0,0,.4);
+
+        z-index: 1000;
+
+        animation:
+            navEnter .8s ease both;
+    }
+
+    @keyframes navEnter {
+
+        from {
+            opacity: 0;
+
+            transform:
+                translate(-50%, -25px);
+        }
+
+        to {
+            opacity: 1;
+
+            transform:
+                translate(-50%, 0);
+        }
+
+    }
+
+    .brand {
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        color: #fff;
+
+        text-decoration: none;
+
+        font-size: 15px;
+
+        font-weight: 900;
+
+        letter-spacing: 1px;
+    }
+
+    .brand img {
+        width: 42px;
+
+        animation:
+            logoFloat 3.5s ease-in-out infinite;
+    }
+
+    @keyframes logoFloat {
+
+        50% {
+            transform:
+                translateY(-4px);
+        }
+
+    }
+
+    .nav-links {
+        display: flex;
+
+        gap: 5px;
+    }
+
+    .nav-links a {
+        color: #cfcac5;
+
+        text-decoration: none;
+
+        padding:
+            10px 14px;
+
+        border-radius:
+            10px;
+
+        font-size:
+            13px;
+
+        font-weight:
+            800;
+
+        transition:
+            .3s ease;
+    }
+
+    .nav-links a:hover {
+        color: #fff;
+
+        background:
+            rgba(255,164,60,.1);
+
+        transform:
+            translateY(-2px);
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+
+        width:
+            min(1100px, calc(100% - 35px));
+
+        margin:
+            auto;
+
+        padding:
+            145px 0 90px;
+    }
+
+    /* =========================
+       PAGE HEADING
+    ========================= */
+
+    .page-heading {
+
+        text-align:
+            center;
+
+        margin-bottom:
+            70px;
+
+        animation:
+            fadeUp .8s ease both;
+    }
+
+    .page-heading small {
+
+        color:
+            #ffad45;
+
+        font-size:
+            11px;
+
+        font-weight:
+            900;
+
+        letter-spacing:
+            4px;
+
+        text-transform:
+            uppercase;
+    }
+
+    .page-heading h1 {
+
+        margin-top:
+            12px;
+
+        font-size:
+            clamp(42px, 7vw, 72px);
+
+        letter-spacing:
+            -2px;
+    }
+
+    .page-heading p {
+
+        max-width:
+            650px;
+
+        margin:
+            15px auto 0;
+
+        color:
+            #aaa;
+
+        line-height:
+            1.8;
+    }
+
+    @keyframes fadeUp {
+
+        from {
+            opacity: 0;
+
+            transform:
+                translateY(25px);
+        }
+
+        to {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+    }
+
+    /* =========================
+       SECTION TITLE
+    ========================= */
+
+    .section-title {
+
+        margin-bottom:
+            30px;
+    }
+
+    .section-title small {
+
+        color:
+            #ffad45;
+
+        font-size:
+            11px;
+
+        font-weight:
+            900;
+
+        letter-spacing:
+            3px;
+
+        text-transform:
+            uppercase;
+    }
+
+    .section-title h2 {
+
+        margin-top:
+            8px;
+
+        font-size:
+            clamp(28px, 5vw, 43px);
+    }
+
+    /* =========================
+       TEAM
+    ========================= */
+
+    .team {
+
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap:
+            18px;
+
+        margin-bottom:
+            100px;
+    }
+
+    .team-card {
+
+        position:
+            relative;
+
+        padding:
+            30px 20px;
+
+        text-align:
+            center;
+
+        border-radius:
+            22px;
+
+        background:
+            rgba(15,11,7,.72);
+
+        border:
+            1px solid
+            rgba(255,180,80,.14);
+
+        backdrop-filter:
+            blur(15px);
+
+        transition:
+            transform .4s ease,
+            border-color .4s ease,
+            box-shadow .4s ease;
+
+        animation:
+            fadeUp .8s ease both;
+    }
+
+    .team-card:nth-child(2) {
+        animation-delay:
+            .12s;
+    }
+
+    .team-card:nth-child(3) {
+        animation-delay:
+            .24s;
+    }
+
+    .team-card:hover {
+
+        transform:
+            translateY(-9px);
+
+        border-color:
+            rgba(255,180,80,.35);
+
+        box-shadow:
+            0 30px 70px
+            rgba(255,120,20,.09);
+    }
+
+    .team-avatar {
+
+        width:
+            105px;
+
+        height:
+            105px;
+
+        margin:
+            0 auto 18px;
+
+        object-fit:
+            cover;
+
+        border-radius:
+            50%;
+
+        border:
+            2px solid
+            rgba(255,180,80,.45);
+
+        box-shadow:
+            0 0 35px
+            rgba(255,130,30,.12);
+    }
+
+    .team-card h3 {
+
+        font-size:
+            22px;
+
+        margin-bottom:
+            7px;
+    }
+
+    .role {
+
+        display:
+            inline-block;
+
+        padding:
+            6px 11px;
+
+        border-radius:
+            999px;
+
+        background:
+            rgba(255,165,60,.1);
+
+        color:
+            #ffb55b;
+
+        font-size:
+            10px;
+
+        font-weight:
+            900;
+
+        text-transform:
+            uppercase;
+
+        letter-spacing:
+            1px;
+    }
+
+    .team-card p {
+
+        margin-top:
+            14px;
+
+        color:
+            #999;
+
+        font-size:
+            13px;
+
+        line-height:
+            1.6;
+    }
+
+    /* =========================
+       INFO GRID
+    ========================= */
+
+    .info-grid {
+
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            18px;
+
+        margin-bottom:
+            100px;
+    }
+
+    .info-card {
+
+        padding:
+            30px;
+
+        border-radius:
+            22px;
+
+        background:
+            rgba(15,11,7,.72);
+
+        border:
+            1px solid
+            rgba(255,180,80,.14);
+
+        backdrop-filter:
+            blur(15px);
+
+        transition:
+            .35s ease;
+    }
+
+    .info-card:hover {
+
+        transform:
+            translateY(-6px);
+
+        border-color:
+            rgba(255,180,80,.3);
+    }
+
+    .info-icon {
+
+        font-size:
+            28px;
+
+        margin-bottom:
+            15px;
+    }
+
+    .info-card h3 {
+
+        font-size:
+            23px;
+
+        margin-bottom:
+            10px;
+    }
+
+    .info-card p {
+
+        color:
+            #a5a09b;
+
+        line-height:
+            1.8;
+
+        font-size:
+            14px;
+    }
+
+    /* =========================
+       SERVER DETAILS
+    ========================= */
+
+    .details {
+
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            18px;
+
+        margin-bottom:
+            100px;
+    }
+
+    .detail {
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            18px;
+
+        padding:
+            23px;
+
+        border-radius:
+            18px;
+
+        background:
+            rgba(15,11,7,.72);
+
+        border:
+            1px solid
+            rgba(255,180,80,.12);
+
+        transition:
+            .3s ease;
+    }
+
+    .detail:hover {
+
+        transform:
+            translateX(5px);
+
+        border-color:
+            rgba(255,180,80,.3);
+    }
+
+    .detail-icon {
+
+        min-width:
+            45px;
+
+        height:
+            45px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        border-radius:
+            12px;
+
+        background:
+            rgba(255,165,60,.08);
+
+        font-size:
+            20px;
+    }
+
+    .detail span {
+
+        display:
+            block;
+
+        color:
+            #777;
+
+        font-size:
+            11px;
+
+        text-transform:
+            uppercase;
+
+        letter-spacing:
+            1px;
+
+        margin-bottom:
+            5px;
+    }
+
+    .detail strong {
+
+        font-size:
+            15px;
+
+        color:
+            #eee;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+
+        padding:
+            65px 30px;
+
+        text-align:
+            center;
+
+        border-radius:
+            26px;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(255,150,40,.09),
+                rgba(255,255,255,.025)
+            );
+
+        border:
+            1px solid
+            rgba(255,180,80,.18);
+
+        margin-bottom:
+            70px;
+    }
+
+    .cta h2 {
+
+        font-size:
+            clamp(30px, 5vw, 48px);
+
+        margin-bottom:
+            12px;
+    }
+
+    .cta p {
+
+        color:
+            #999;
+
+        margin-bottom:
+            25px;
+    }
+
+    .btn {
+
+        display:
+            inline-flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        padding:
+            15px 24px;
+
+        border-radius:
+            13px;
+
+        text-decoration:
+            none;
+
+        font-size:
+            13px;
+
+        font-weight:
+            900;
+
+        color:
+            #160b02;
+
+        background:
+            linear-gradient(
+                135deg,
+                #ffad3d,
+                #d96508
+            );
+
+        box-shadow:
+            0 12px 35px
+            rgba(255,115,20,.18);
+
+        transition:
+            .3s ease;
+    }
+
+    .btn:hover {
+
+        transform:
+            translateY(-5px);
+
+        box-shadow:
+            0 20px 45px
+            rgba(255,130,30,.2);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+
+        padding:
+            40px 20px;
+
+        text-align:
+            center;
+
+        color:
+            #666;
+
+        border-top:
+            1px solid
+            rgba(255,255,255,.05);
+    }
+
+    footer strong {
+        color:
+            #ffad45;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 800px) {
+
+        .team {
+
+            grid-template-columns:
+                1fr;
+
+        }
+
+        .info-grid,
+        .details {
+
+            grid-template-columns:
+                1fr;
+
+        }
+
+    }
+
+    @media (max-width: 600px) {
+
+        nav {
+
+            top:
+                10px;
+
+            width:
+                calc(100% - 20px);
+
+            padding:
+                9px 11px;
+        }
+
+        .brand span {
+            display:
+                none;
+        }
+
+        .brand img {
+            width:
+                38px;
+        }
+
+        .nav-links a {
+
+            padding:
+                8px 7px;
+
+            font-size:
+                10px;
+        }
+
+        main {
+
+            padding-top:
+                125px;
+        }
+
+        .team-card,
+        .info-card {
+
+            padding:
+                25px 20px;
+        }
+
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<!-- PARTICLES -->
+<div id="particles"></div>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <a href="index.html" class="brand">
+
+        <img
+            src="assets/logo.png"
+            alt="ColtMC Logo"
+        >
+
+        <span>
+            COLTMC
+        </span>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            HOME
+        </a>
+
+        <a href="information.html">
+            INFORMATION
+        </a>
+
+        <a
+            href="discord.coltmc.bond"
+            target="_blank"
+            rel="noopener"
+        >
+            DISCORD
+        </a>
+
+    </div>
+
+</nav>
+
+
+<main>
+
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-heading">
+
+        <small>
+            COLTMC
+        </small>
+
+        <h1>
+            Server Information
+        </h1>
+
+        <p>
+            Everything you need to know about ColtMC,
+            from the people behind the server to the
+            gameplay experience.
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         TEAM — TOP
+    ========================= -->
+
+    <section>
+
+        <div class="section-title">
+
+            <small>
+                The People Behind ColtMC
+            </small>
+
+            <h2>
+                Team
+            </h2>
+
+        </div>
+
+
+        <div class="team">
+
+
+            <!-- OWNER -->
+
+            <div class="team-card">
+
+                <img
+                    src="assets/owner.png"
+                    alt="Owner"
+                    class="team-avatar"
+                >
+
+                <h3>
+                    NotRohitMC
+                </h3>
+
+                <span class="role">
+                    Owner
+                </span>
+
+                <p>
+                    Founder and owner of ColtMC,
+                    responsible for the overall
+                    direction of the server.
+                </p>
+
+            </div>
+
+
+            <!-- CO-OWNER -->
+
+            <div class="team-card">
+
+                <img
+                    src="assets/coowner.png"
+                    alt="Co-Owner"
+                    class="team-avatar"
+                >
+
+                <h3>
+                    JeetuMC
+                </h3>
+
+                <span class="role">
+                    Co-Owner
+                </span>
+
+                <p>
+                    Helping manage and develop
+                    the ColtMC community.
+                </p>
+
+            </div>
+
+
+            <!-- CONTRIBUTOR -->
+
+            <div class="team-card">
+
+                <img
+                    src="assets/contributor.png"
+                    alt="Contributor"
+                    class="team-avatar"
+                >
+
+                <h3>
+                    Fireblaze
+                </h3>
+
+                <span class="role">
+                    Contributor
+                </span>
+
+                <p>
+                    Contributing to the ColtMC
+                    project and community.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GAME MODES
+    ========================= -->
+
+    <section>
+
+        <div class="section-title">
+
+            <small>
+                Gameplay
+            </small>
+
+            <h2>
+                Game Modes
+            </h2>
+
+        </div>
+
+
+        <div class="info-grid">
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    💰
+                </div>
+
+                <h3>
+                    Economic
+                </h3>
+
+                <p>
+                    Build your wealth, trade with
+                    players and grow your economy
+                    while creating your own journey
+                    on ColtMC.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    ⚔️
+                </div>
+
+                <h3>
+                    Practice
+                </h3>
+
+                <p>
+                    Improve your PvP skills, compete
+                    against other players and become
+                    better through practice.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EDITIONS
+    ========================= -->
+
+    <section>
+
+        <div class="section-title">
+
+            <small>
+                Compatibility
+            </small>
+
+            <h2>
+                Play Your Way
+            </h2>
+
+        </div>
+
+
+        <div class="info-grid">
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🖥️
+                </div>
+
+                <h3>
+                    Java Edition
+                </h3>
+
+                <p>
+                    Join ColtMC from Minecraft
+                    Java Edition and enjoy the
+                    complete server experience.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Bedrock / Pocket Edition
+                </h3>
+
+                <p>
+                    Bedrock and Pocket Edition
+                    players can also join the
+                    ColtMC community.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ACCESS
+    ========================= -->
+
+    <section>
+
+        <div class="section-title">
+
+            <small>
+                Access
+            </small>
+
+            <h2>
+                Who Can Join?
+            </h2>
+
+        </div>
+
+
+        <div class="info-grid">
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    ⭐
+                </div>
+
+                <h3>
+                    Premium
+                </h3>
+
+                <p>
+                    Players with official Minecraft
+                    accounts can join ColtMC.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🔓
+                </div>
+
+                <h3>
+                    Cracked
+                </h3>
+
+                <p>
+                    ColtMC also supports cracked
+                    Minecraft players.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SERVER DETAILS
+    ========================= -->
+
+    <section>
+
+        <div class="section-title">
+
+            <small>
+                Server
+            </small>
+
+            <h2>
+                Server Details
+            </h2>
+
+        </div>
+
+
+        <div class="details">
+
+
+            <div class="detail">
+
+                <div class="detail-icon">
+                    🎮
+                </div>
+
+                <div>
+
+                    <span>
+                        Platform
+                    </span>
+
+                    <strong>
+                        Java + Bedrock / Pocket
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail">
+
+                <div class="detail-icon">
+                    💰
+                </div>
+
+                <div>
+
+                    <span>
+                        Main Gameplay
+                    </span>
+
+                    <strong>
+                        Economic + Practice
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail">
+
+                <div class="detail-icon">
+                    🔓
+                </div>
+
+                <div>
+
+                    <span>
+                        Access
+                    </span>
+
+                    <strong>
+                        Premium + Cracked
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail">
+
+                <div class="detail-icon">
+                    🌐
+                </div>
+
+                <div>
+
+                    <span>
+                        Website
+                    </span>
+
+                    <strong>
+                        coltmc.bond
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================= -->
+
+    <div class="cta">
+
+        <h2>
+            Ready to Join ColtMC?
+        </h2>
+
+        <p>
+            Jump into the server and become part
+            of the ColtMC community.
+        </p>
+
+        <a
+            href="discord.coltmc.bond"
+            target="_blank"
+            rel="noopener"
+            class="btn"
+        >
+            JOIN DISCORD
+        </a>
+
+    </div>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026
+        <strong>ColtMC</strong>.
+        All rights reserved.
+    </p>
+
+    <p style="margin-top:8px;">
+        Minecraft is a trademark of Mojang Studios.
+    </p>
+
+</footer>
+
+
+<script>
+
+    /* =========================
+       PARTICLES
+    ========================= */
+
+    const container =
+        document.getElementById("particles");
+
+    for (let i = 0; i < 35; i++) {
+
+        const particle =
+            document.createElement("div");
+
+        particle.className =
+            "particle";
+
+        particle.style.left =
+            Math.random() * 100 + "%";
+
+        particle.style.animationDuration =
+            (9 + Math.random() * 14) + "s";
+
+        particle.style.animationDelay =
+            Math.random() * -18 + "s";
+
+        const size =
+            2 + Math.random() * 3;
+
+        particle.style.width =
+            size + "px";
+
+        particle.style.height =
+            size + "px";
+
+        container.appendChild(
+            particle
+        );
+    }
+
+</script>
+
+</body>
+</html>
